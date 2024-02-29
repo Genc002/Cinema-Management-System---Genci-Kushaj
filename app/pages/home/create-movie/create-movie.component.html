@@ -1,0 +1,44 @@
+<div class="contain-fluid">
+<form [formGroup]="createMovieForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name of the uploader:</label>
+       
+        <input type="text" id="name" formControlName="name" required>
+
+        <div *ngIf="createMovieForm.get('name').touched && createMovieForm.get('name').errors">
+            <small class="text-danger" *ngIf="createMovieForm.get('name').errors['required']">
+                Name is required.
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="title">Title:</label>
+       
+        <input type="text" id="title" formControlName="title" required>
+        <div *ngIf="createMovieForm.get('title').touched && createMovieForm.get('title').errors">
+            <small class="text-danger" *ngIf="createMovieForm.get('title').errors['required']">
+                Title is required.
+            </small>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" id="description" formControlName="description" required>
+        <div *ngIf="createMovieForm.get('description').touched && createMovieForm.get('description').errors">
+            <small class="text-danger" *ngIf="createMovieForm.get('description').errors['required']">
+                Description is required.
+            </small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="label" for="img">Upload the movie image</label>       
+            <input type="file" (change)="onFileSelected($event)" accept="image/*">
+                   
+
+    </div>
+    <button type="submit" class="btn btn-primary" 
+     >Create Movie</button>
+  
+</form>
+</div>
